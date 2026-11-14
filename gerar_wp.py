@@ -68,30 +68,22 @@ card = f"display:inline-block;min-width:150px;margin:0 8px 8px 0;padding:12px 14
 def kpi(n, t): return f'<div style="{card}"><div style="font-size:26px;font-weight:700;color:{C["brand"]}">{n}</div><div style="font-size:13px;color:{C["muted"]}">{t}</div></div>'
 
 out = []
-out.append(f'<p>Painel do <strong>NETEC</strong> com os principais <strong>congressos e eventos científicos de Administração e Contabilidade</strong>, nacionais e internacionais: nome do evento, site oficial, periodicidade, local (cidade e país), período de submissão de trabalhos, período de realização e ano da edição. As informações vêm dos sites oficiais e são revisadas periodicamente.</p>')
-out.append(f'<p style="color:{C["muted"]};font-size:14px">Última atualização: <strong>{f(dt.date.fromisoformat(d["atualizado_em"]))}</strong>. Confira sempre o site oficial antes de submeter.</p>')
-out.append('<div>' + kpi(len(ev), 'eventos cadastrados') + kpi(len(nac), 'congressos nacionais') + kpi(len(inter), 'congressos internacionais') + kpi(len(abertos), 'com submissão aberta') + kpi(len(paises), 'países-sede') + '</div>')
-out.append('<p><a href="#nacionais">Congressos nacionais</a> · <a href="#internacionais">Congressos internacionais</a> · <a href="#prazos">Submissões abertas</a> · <a href="#proximos">Próximos eventos</a></p>')
-
-out.append('<h2 id="prazos">Submissões abertas</h2>')
-if abertos:
-    out.append('<ul>' + ''.join(f'<li><strong>{E(e["sigla"])}</strong> – {E(e["nome"])}: prazo até <strong>{f(e["_sf"])}</strong> · evento em {E(e["_ev"])}, {E(e["cidade"])} ({E(e["pais"])}). <a href="{E(e["site"])}" target="_blank" rel="noopener">Site oficial</a></li>' for e in abertos) + '</ul>')
-else:
-    out.append('<p>Nenhuma submissão aberta no momento da última atualização.</p>')
-
-out.append('<h2 id="proximos">Próximos eventos (90 dias)</h2>')
-out.append('<ul>' + ''.join(f'<li><strong>{E(e["_ev"])}</strong> – {E(e["nome"])} ({E(e["sigla"])}), {E(e["cidade"])} · {E(e["pais"])}</li>' for e in proximos) + '</ul>')
-
-out.append(f'<h2 id="nacionais">Congressos nacionais ({len(nac)})</h2>')
+P_ = 'style="margin:0 0 14px"'
+out.append(f'<p {P_}>Painel do Grupo de Pesquisa <strong>NETEC/UFSC</strong> com os principais <strong>congressos e eventos científicos de Administração, Contabilidade, Finanças e Administração Pública</strong>, nacionais e internacionais. Para cada evento: site oficial, periodicidade, local (cidade e país), período de submissão de trabalhos, período de realização e ano da edição.</p>')
+out.append(f'<p {P_}>Base com <strong>{len(ev)} eventos</strong> ({len(nac)} nacionais e {len(inter)} internacionais), revisada periodicamente a partir dos sites oficiais. Última atualização: <strong>{f(dt.date.fromisoformat(d["atualizado_em"]))}</strong>. Confira sempre o site oficial antes de submeter.</p>')
+out.append('<h2 id="painel" style="margin:28px 0 10px">Painel interativo</h2>')
+out.append(f'<p {P_}>Busque por nome, sigla, cidade ou país; filtre por âmbito, área, situação e submissões abertas; alterne entre tabela, cartões e calendário. <a href="https://leoflach.github.io/netec-eventos/" target="_blank" rel="noopener">Abrir o painel em tela cheia</a>.</p>')
+out.append('<iframe src="https://leoflach.github.io/netec-eventos/" width="100%" height="1150" frameborder="0" title="Painel interativo de eventos científicos NETEC"></iframe>')
+out.append(f'<h2 id="lista" style="margin:32px 0 10px">Lista completa de eventos</h2>')
+out.append(f'<p {P_}>Ir para: <a href="#nacionais">Congressos nacionais</a> · <a href="#internacionais">Congressos internacionais</a> · <a href="#sobre">Sobre este painel</a></p>')
+out.append(f'<h3 id="nacionais" style="margin:24px 0 10px">Congressos nacionais ({len(nac)})</h3>')
 out.append(tabela(nac))
-out.append(f'<h2 id="internacionais">Congressos internacionais ({len(inter)})</h2>')
+out.append(f'<h3 id="internacionais" style="margin:28px 0 10px">Congressos internacionais ({len(inter)})</h3>')
 out.append(tabela(inter))
-
-out.append('<h2>Sobre este painel</h2>')
-out.append(f'<p><strong>Critério de âmbito.</strong> {E(d["criterio_ambito"])}</p>')
-out.append('<p>Para cada evento aparece a edição mais recente com datas e local divulgados; quando a próxima edição ainda não foi anunciada, isso é indicado nas observações. Itens marcados com <span style="color:#9a6400">*</span> têm informações a confirmar.</p>')
-out.append(f'<p><strong>Fontes:</strong> {E(d.get("fontes",""))}</p>')
-out.append('<p>Sentiu falta de algum evento ou encontrou uma data errada? Escreva para o NETEC.</p>')
-
+out.append('<h2 id="sobre" style="margin:32px 0 10px">Sobre este painel</h2>')
+out.append(f'<p {P_}><strong>Critério de âmbito.</strong> {E(d["criterio_ambito"])}</p>')
+out.append(f'<p {P_}>Para cada evento aparece a edição mais recente com datas e local divulgados; quando a próxima edição ainda não foi anunciada, isso é indicado nas observações. Itens marcados com <span style="color:#9a6400">*</span> têm informações a confirmar.</p>')
+out.append(f'<p {P_}><strong>Fontes:</strong> {E(d.get("fontes",""))} Dados abertos em <a href="https://github.com/leoflach/netec-eventos" target="_blank" rel="noopener">github.com/leoflach/netec-eventos</a>.</p>')
+out.append(f'<p {P_}>Sentiu falta de algum evento ou encontrou uma data errada? Escreva para o NETEC.</p>')
 open('wp_conteudo.html', 'w').write('\n'.join(out))
 print(len('\n'.join(out)), 'chars;', len(abertos), 'abertos;', len(proximos), 'proximos')

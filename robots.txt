@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leoflach.github.io/netec-eventos/sitemap.xml
