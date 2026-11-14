@@ -26,7 +26,9 @@
   .sub{opacity:.88;max-width:760px;margin:0}
   .stamp{margin-top:10px;font-size:13px;opacity:.8}
   main{margin-top:-44px;padding:0 24px 48px}
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  @media (max-width:1000px){.kpis{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:480px){.kpis{grid-template-columns:repeat(2,1fr)}}
   .kpi{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;border:1px solid var(--line)}
   .kpi b{display:block;font-size:28px;line-height:1.1;color:var(--brand)}
   .kpi span{font-size:13px;color:var(--muted)}
