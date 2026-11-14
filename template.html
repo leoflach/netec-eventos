@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Congressos e Eventos Científicos em Administração e Contabilidade · NETEC/UFSC</title>
+<meta name="description" content="Painel atualizado com congressos e eventos científicos nacionais e internacionais de Administração e Contabilidade: datas, locais, prazos de submissão e sites oficiais. Mantido pelo Grupo de Pesquisa NETEC/UFSC.">
+<meta property="og:title" content="Congressos e Eventos Científicos em Administração e Contabilidade">
+<meta property="og:description" content="Datas, locais, prazos de submissão e sites oficiais dos principais congressos nacionais e internacionais da área. NETEC/UFSC.">
+<link rel="canonical" href="https://leoflach.github.io/netec-eventos/">
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#ffffff; --ink:#1c2230; --muted:#5c6577; --line:#e3e6ec;
+    --brand:#14325c; --brand2:#1f6f8b; --accent:#e0a423;
+    --nac:#1f6f8b; --int:#7a4fb3;
+    --ok:#1e7d4f; --okbg:#e3f4ea; --warn:#9a6400; --warnbg:#fdf1d8; --off:#6b7280; --offbg:#eef0f3; --live:#b4232a; --livebg:#fde5e5;
+    --radius:12px; --shadow:0 1px 2px rgba(20,30,50,.06),0 2px 8px rgba(20,30,50,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45}
+  a{color:var(--brand2)}
+  header.top{background:linear-gradient(120deg,var(--brand),#1b4a7a 60%,var(--brand2));color:#fff;padding:28px 24px 64px}
+  .wrap{max-width:1280px;margin:0 auto}
+  .kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;font-weight:600}
+  h1{margin:6px 0 6px;font-size:clamp(22px,3vw,32px);line-height:1.15}
+  .sub{opacity:.88;max-width:760px;margin:0}
+  .stamp{margin-top:10px;font-size:13px;opacity:.8}
+  main{margin-top:-44px;padding:0 24px 48px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .kpi{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;border:1px solid var(--line)}
+  .kpi b{display:block;font-size:28px;line-height:1.1;color:var(--brand)}
+  .kpi span{font-size:13px;color:var(--muted)}
+  .panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);margin-top:16px}
+  .tabs{display:flex;gap:4px;padding:10px 12px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .tab{appearance:none;border:0;background:none;padding:10px 14px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;border-radius:6px 6px 0 0}
+  .tab[aria-selected="true"]{color:var(--brand);border-bottom-color:var(--accent)}
+  .tab .n{display:inline-block;margin-left:6px;font-size:12px;background:var(--offbg);color:var(--muted);padding:1px 7px;border-radius:999px}
+  .filters{display:grid;grid-template-columns:2fr repeat(5,1fr);gap:10px;padding:14px 16px}
+  .filters label{min-width:0;display:flex;flex-direction:column;font-size:12px;color:var(--muted);gap:4px;font-weight:600}
+  input,select{font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);min-width:0}
+  input:focus,select:focus,button:focus-visible{outline:2px solid var(--brand2);outline-offset:1px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 16px 12px;flex-wrap:wrap}
+  .count{color:var(--muted);font-size:14px}
+  .btns{display:flex;gap:6px;flex-wrap:wrap}
+  .btn{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 12px;border-radius:8px;cursor:pointer}
+  .btn[aria-pressed="true"]{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .btn.ghost{color:var(--brand2)}
+  .tablewrap{overflow-x:auto;border-top:1px solid var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{position:sticky;top:0;background:#fafbfc;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);cursor:pointer;white-space:nowrap;user-select:none}
+  th[aria-sort="ascending"]::after{content:" ▲";font-size:10px}
+  th[aria-sort="descending"]::after{content:" ▼";font-size:10px}
+  tbody tr:hover{background:#f8fafc}
+  .ename{font-weight:650}
+  .esig{color:var(--muted);font-size:12.5px}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .tag.N{background:#e2f0f4;color:var(--nac)} .tag.I{background:#efe7f8;color:var(--int)}
+  .st{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap;margin:1px 0}
+  .st.ok{background:var(--okbg);color:var(--ok)} .st.warn{background:var(--warnbg);color:var(--warn)} .st.off{background:var(--offbg);color:var(--off)} .st.live{background:var(--livebg);color:var(--live)}
+  .small{font-size:12.5px;color:var(--muted)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;padding:16px;border-top:1px solid var(--line)}
+  .card{border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;background:#fff}
+  .card h3{margin:0;font-size:15.5px;line-height:1.3}
+  .card dl{display:grid;grid-template-columns:96px 1fr;gap:4px 8px;margin:0;font-size:13.5px}
+  .card dt{color:var(--muted)}
+  .card dd{margin:0}
+  .cal{padding:16px;border-top:1px solid var(--line)}
+  .month{margin-bottom:18px}
+  .month h3{margin:0 0 8px;font-size:15px;color:var(--brand);border-bottom:2px solid var(--accent);display:inline-block;padding-bottom:2px;}
+  .item{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;background:#fff}
+  .item .d{font-weight:700;font-size:13px}
+  .item .k{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+  .k.sub{color:var(--warn)} .k.ev{color:var(--brand2)}
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+  .note{margin-top:16px;font-size:13px;color:var(--muted);padding:14px 16px}
+  .note p{margin:4px 0}
+  footer{text-align:center;font-size:12.5px;color:var(--muted);padding:12px 24px 32px}
+  .unconf{color:var(--warn);font-weight:700;cursor:help}
+  @media (max-width:900px){.filters{grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:1/-1}}
+  @media (max-width:560px){.filters{grid-template-columns:1fr}header.top{padding:20px 16px 56px}main{padding:0 12px 32px}.item{grid-template-columns:1fr}.kpi b{font-size:22px}}
+  @media print{header.top{background:var(--brand)!important;-webkit-print-color-adjust:exact}.filters,.bar .btns{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="kicker">NETEC · Grupo de Pesquisa</div>
+    <h1>Congressos e eventos científicos em Administração e Contabilidade</h1>
+    <p class="sub">Painel com os principais eventos nacionais e internacionais da área: onde e quando acontecem, prazos de submissão e site oficial.</p>
+    <div class="stamp" id="stamp"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="kpis" id="kpis" aria-label="Resumo"></section>
+
+  <section class="panel">
+    <div class="tabs" role="tablist" aria-label="Âmbito">
+      <button class="tab" role="tab" data-amb="" aria-selected="true">Todos <span class="n" id="n-all"></span></button>
+      <button class="tab" role="tab" data-amb="Nacional" aria-selected="false">Nacionais <span class="n" id="n-nac"></span></button>
+      <button class="tab" role="tab" data-amb="Internacional" aria-selected="false">Internacionais <span class="n" id="n-int"></span></button>
+    </div>
+
+    <div class="filters">
+      <label>Buscar
+        <input id="q" type="search" placeholder="Nome, sigla, cidade ou país…" autocomplete="off">
+      </label>
+      <label>Área <select id="f-area"></select></label>
+      <label>Situação do evento
+        <select id="f-sit">
+          <option value="">Todas</option>
+          <option value="prox">Próximos</option>
+          <option value="live">Em andamento</option>
+          <option value="past">Já realizados</option>
+          <option value="tbc">Datas a confirmar</option>
+        </select>
+      </label>
+      <label>Submissões
+        <select id="f-sub">
+          <option value="">Todas</option>
+          <option value="open">Abertas agora</option>
+          <option value="soon">Abrem em breve / a divulgar</option>
+          <option value="closed">Encerradas</option>
+        </select>
+      </label>
+      <label>País <select id="f-pais"></select></label>
+      <label>Ano <select id="f-ano"></select></label>
+    </div>
+
+    <div class="bar">
+      <div class="count" id="count" aria-live="polite"></div>
+      <div class="btns">
+        <button class="btn" data-view="table" aria-pressed="true">Tabela</button>
+        <button class="btn" data-view="cards" aria-pressed="false">Cartões</button>
+        <button class="btn" data-view="cal" aria-pressed="false">Calendário</button>
+        <button class="btn ghost" id="clear">Limpar filtros</button>
+        <button class="btn ghost" id="csv">Baixar CSV</button>
+      </div>
+    </div>
+
+    <div id="view"></div>
+  </section>
+
+  <section class="panel note" id="note"></section>
+</main>
+<footer>Grupo de Pesquisa NETEC/UFSC · <a href="https://netec.paginas.ufsc.br/eventos-cientificos/" target="_blank" rel="noopener">netec.paginas.ufsc.br/eventos-cientificos</a> · Dados abertos em <a href="eventos.json">eventos.json</a></footer>
+
+<script type="application/json" id="dados-embutidos">__DATA__</script>
+<script>
+(function(){
+  "use strict";
+  var DATA = null, EVENTS = [], TODAY = new Date(); TODAY.setHours(0,0,0,0);
+  var state = {amb:"", q:"", area:"", sit:"", sub:"", pais:"", ano:"", view:"table", sort:"ev_ini", dir:1};
+  var MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  var MESES_L = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+
+  function d(s){ if(!s) return null; var p=s.split("-"); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function fmt(dt){ return String(dt.getDate()).padStart(2,"0")+"/"+String(dt.getMonth()+1).padStart(2,"0")+"/"+dt.getFullYear(); }
+  function range(a,b){
+    if(a&&b){ if(a.getTime()===b.getTime()) return fmt(a);
+      if(a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()) return String(a.getDate()).padStart(2,"0")+"–"+fmt(b);
+      return fmt(a)+" a "+fmt(b); }
+    if(b) return "Até "+fmt(b);
+    if(a) return "A partir de "+fmt(a);
+    return "";
+  }
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+  function days(a,b){ return Math.round((b-a)/86400000); }
+
+  function enrich(e){
+    e._ei=d(e.ev_ini); e._ef=d(e.ev_fim)||e._ei; e._si=d(e.sub_ini); e._sf=d(e.sub_fim);
+    // situação do evento
+    if(!e._ei){ e._sit="tbc"; }
+    else if(e._ef<TODAY){ e._sit="past"; }
+    else if(e._ei<=TODAY){ e._sit="live"; }
+    else { e._sit="prox"; }
+    // submissões
+    if(e._sf && e._sf<TODAY){ e._sub="closed"; }
+    else if(!e._si && /^abre/i.test(e.sub_txt||"")){ e._sub="soon"; }
+    else if(e._si && e._si>TODAY){ e._sub="soon"; }
+    else if(e._sf && e._sf>=TODAY && (!e._si || e._si<=TODAY)){ e._sub="open"; }
+    else if(/encerrad/i.test(e.sub_txt) || (e._sit==="past"||e._sit==="live")){ e._sub="closed"; }
+    else { e._sub="soon"; }
+    e._evtxt = range(e._ei,d(e.ev_fim)) || e.ev_txt || "A confirmar";
+    e._subtxt = range(e._si,e._sf) || e.sub_txt || "Consultar site";
+    if(range(e._si,e._sf) && e.sub_txt && (!e._sf || e.sub_txt.indexOf(fmt(e._sf))<0)) e._subtxt += " · " + e.sub_txt;
+    e._local = [e.cidade, e.pais].filter(Boolean).join(" · ");
+    e._hay = [e.nome,e.sigla,e.cidade,e.pais,e.area,e.edicao].join(" ").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+    return e;
+  }
+
+  function sitBadge(e){
+    if(e._sit==="live") return '<span class="st live">Em andamento</span>';
+    if(e._sit==="past") return '<span class="st off">Realizado</span>';
+    if(e._sit==="tbc") return '<span class="st off">Datas a confirmar</span>';
+    var n=days(TODAY,e._ei); return '<span class="st ok">Em '+n+' dia'+(n===1?'':'s')+'</span>';
+  }
+  function subBadge(e){
+    if(e._sub==="open"){ var n=days(TODAY,e._sf); return '<span class="st warn">Submissão aberta · faltam '+n+' dia'+(n===1?'':'s')+'</span>'; }
+    if(e._sub==="soon" && e._si){ return '<span class="st ok">Abre em '+fmt(e._si)+'</span>'; }
+    return "";
+  }
+  function unconf(e){ return e.confirmado===false ? ' <span class="unconf" title="Informação a confirmar no site oficial">*</span>' : ""; }
+
+  function filtered(){
+    var q = state.q.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").trim();
+    return EVENTS.filter(function(e){
+      if(state.amb && e.ambito!==state.amb) return false;
+      if(state.area && e.area!==state.area) return false;
+      if(state.sit && e._sit!==state.sit) return false;
+      if(state.sub && e._sub!==state.sub) return false;
+      if(state.pais && e.pais!==state.pais) return false;
+      if(state.ano && String(e.ano)!==state.ano) return false;
+      if(q && e._hay.indexOf(q)<0) return false;
+      return true;
+    });
+  }
+
+  function sortKey(e,k){
+    if(k==="ev_ini") return e._ei ? e._ei.getTime() + (e._sit==="past"?1e13:0) : 9e13;
+    if(k==="sub_fim") return e._sf ? e._sf.getTime() : 9e13;
+    if(k==="ano") return e.ano;
+    if(k==="local") return e._local.toLowerCase();
+    return String(e[k]||"").toLowerCase();
+  }
+  function sorted(list){
+    var k=state.sort, dir=state.dir;
+    return list.slice().sort(function(a,b){ var x=sortKey(a,k), y=sortKey(b,k); return x<y?-dir:x>y?dir:0; });
+  }
+
+  function renderTable(list){
+    var cols=[["nome","Evento"],["ambito","Âmbito"],["site","Site"],["periodicidade","Periodicidade"],["local","Local (cidade · país)"],["sub_fim","Período de submissão"],["ev_ini","Período do evento"],["ano","Ano"]];
+    var h='<div class="tablewrap"><table><thead><tr>';
+    cols.forEach(function(c){ var s = state.sort===c[0] ? (state.dir>0?"ascending":"descending") : "none";
+      h+='<th scope="col" data-k="'+c[0]+'" aria-sort="'+s+'" tabindex="0">'+c[1]+'</th>'; });
+    h+='</tr></thead><tbody>';
+    list.forEach(function(e){
+      h+='<tr>'+
+        '<td><div class="ename">'+esc(e.nome)+unconf(e)+'</div><div class="esig">'+esc(e.sigla)+(e.edicao?' · '+esc(e.edicao):'')+' · '+esc(e.area)+'</div>'+(e.obs?'<div class="small">'+esc(e.obs)+'</div>':'')+'</td>'+
+        '<td><span class="tag '+(e.ambito==="Nacional"?"N":"I")+'">'+esc(e.ambito)+'</span></td>'+
+        '<td><a href="'+esc(e.site)+'" target="_blank" rel="noopener">Acessar ↗</a></td>'+
+        '<td>'+esc(e.periodicidade)+'</td>'+
+        '<td>'+esc(e._local)+'</td>'+
+        '<td>'+esc(e._subtxt)+'<br>'+subBadge(e)+'</td>'+
+        '<td>'+esc(e._evtxt)+'<br>'+sitBadge(e)+'</td>'+
+        '<td>'+esc(e.ano)+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+    return h;
+  }
+
+  function renderCards(list){
+    var h='<div class="cards">';
+    list.forEach(function(e){
+      h+='<article class="card"><div><span class="tag '+(e.ambito==="Nacional"?"N":"I")+'">'+esc(e.ambito)+'</span> '+sitBadge(e)+' '+subBadge(e)+'</div>'+
+         '<h3>'+esc(e.nome)+unconf(e)+'</h3><div class="esig">'+esc(e.sigla)+(e.edicao?' · '+esc(e.edicao):'')+'</div>'+
+         '<dl><dt>Local</dt><dd>'+esc(e._local)+'</dd><dt>Evento</dt><dd>'+esc(e._evtxt)+'</dd><dt>Submissão</dt><dd>'+esc(e._subtxt)+'</dd>'+
+         '<dt>Periodicidade</dt><dd>'+esc(e.periodicidade)+'</dd><dt>Área</dt><dd>'+esc(e.area)+'</dd></dl>'+
+         (e.obs?'<div class="small">'+esc(e.obs)+'</div>':'')+
+         '<div><a href="'+esc(e.site)+'" target="_blank" rel="noopener">Site oficial ↗</a></div></article>';
+    });
+    return h+'</div>';
+  }
+
+  function renderCal(list){
+    var items=[];
+    list.forEach(function(e){
+      if(e._ei && e._ef>=TODAY) items.push({dt:e._ei,kind:"ev",e:e,txt:e._evtxt});
+      if(e._sf && e._sf>=TODAY) items.push({dt:e._sf,kind:"sub",e:e,txt:"Prazo de submissão"});
+      if(e._si && e._si>TODAY) items.push({dt:e._si,kind:"sub",e:e,txt:"Abertura das submissões"});
+    });
+    items.sort(function(a,b){return a.dt-b.dt;});
+    if(!items.length) return '<div class="empty">Nenhuma data futura para os filtros selecionados.</div>';
+    var h='<div class="cal">', cur="";
+    items.forEach(function(it){
+      var key=it.dt.getFullYear()+"-"+it.dt.getMonth();
+      if(key!==cur){ if(cur) h+='</div>'; cur=key; h+='<div class="month"><h3>'+MESES_L[it.dt.getMonth()].charAt(0).toUpperCase()+MESES_L[it.dt.getMonth()].slice(1)+' de '+it.dt.getFullYear()+'</h3>'; }
+      h+='<div class="item"><div><div class="d">'+fmt(it.dt)+'</div><div class="k '+it.kind+'">'+(it.kind==="ev"?"Evento":"Submissão")+'</div></div>'+
+         '<div><strong>'+esc(it.e.sigla)+'</strong> — '+esc(it.e.nome)+'<div class="small">'+esc(it.txt)+' · '+esc(it.e._local)+'</div></div>'+
+         '<div><span class="tag '+(it.e.ambito==="Nacional"?"N":"I")+'">'+esc(it.e.ambito)+'</span></div></div>';
+    });
+    return h+'</div></div>';
+  }
+
+  function render(){
+    var list = sorted(filtered());
+    document.getElementById("count").textContent = list.length+" de "+EVENTS.length+" eventos";
+    var v=document.getElementById("view");
+    if(!list.length){ v.innerHTML='<div class="empty">Nenhum evento encontrado com esses filtros.</div>'; return; }
+    v.innerHTML = state.view==="cards" ? renderCards(list) : state.view==="cal" ? renderCal(list) : renderTable(list);
+    if(state.view==="table"){
+      v.querySelectorAll("th").forEach(function(th){
+        function go(){ var k=th.getAttribute("data-k"); if(state.sort===k) state.dir*=-1; else {state.sort=k; state.dir=1;} render(); }
+        th.addEventListener("click",go);
+        th.addEventListener("keydown",function(ev){ if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();go();} });
+      });
+    }
+  }
+
+  function kpis(){
+    var nac=EVENTS.filter(function(e){return e.ambito==="Nacional";}).length;
+    var open=EVENTS.filter(function(e){return e._sub==="open";}).length;
+    var soon=EVENTS.filter(function(e){return e._ei && e._ei>=TODAY && days(TODAY,e._ei)<=90;}).length;
+    var live=EVENTS.filter(function(e){return e._sit==="live";}).length;
+    var paises={}; EVENTS.forEach(function(e){ if(e.pais && !/confirmar/i.test(e.pais)) paises[e.pais]=1; });
+    var k=[[EVENTS.length,"eventos no painel"],[nac,"nacionais"],[EVENTS.length-nac,"internacionais"],[open,"com submissão aberta"],[soon+live,"acontecendo ou nos próximos 90 dias"],[Object.keys(paises).length,"países-sede"]];
+    document.getElementById("kpis").innerHTML = k.map(function(x){return '<div class="kpi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join("");
+    document.getElementById("n-all").textContent=EVENTS.length;
+    document.getElementById("n-nac").textContent=nac;
+    document.getElementById("n-int").textContent=EVENTS.length-nac;
+  }
+
+  function fillSelect(id,values,label){
+    var s=document.getElementById(id);
+    s.innerHTML='<option value="">'+label+'</option>'+values.map(function(v){return '<option>'+esc(v)+'</option>';}).join("");
+  }
+  function uniq(f){ var o={}; EVENTS.forEach(function(e){ var v=f(e); if(v!=null&&v!=="") o[v]=1; }); return Object.keys(o).sort(function(a,b){return a.localeCompare(b,"pt");}); }
+
+  function csv(){
+    var head=["Evento","Sigla","Edição","Âmbito","Área","Site","Periodicidade","Cidade","País","Período de submissão","Período do evento","Ano","Observações"];
+    var rows=sorted(filtered()).map(function(e){ return [e.nome,e.sigla,e.edicao,e.ambito,e.area,e.site,e.periodicidade,e.cidade,e.pais,e._subtxt,e._evtxt,e.ano,e.obs]; });
+    var txt=[head].concat(rows).map(function(r){ return r.map(function(c){ c=String(c==null?"":c); return /[";\n]/.test(c)?'"'+c.replace(/"/g,'""')+'"':c; }).join(";"); }).join("\n");
+    var blob=new Blob(["﻿"+txt],{type:"text/csv;charset=utf-8"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="eventos-netec.csv"; document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  function bind(){
+    document.querySelectorAll(".tab").forEach(function(t){
+      t.addEventListener("click",function(){ document.querySelectorAll(".tab").forEach(function(x){x.setAttribute("aria-selected","false");}); t.setAttribute("aria-selected","true"); state.amb=t.getAttribute("data-amb"); render(); });
+    });
+    document.getElementById("q").addEventListener("input",function(e){ state.q=e.target.value; render(); });
+    [["f-area","area"],["f-sit","sit"],["f-sub","sub"],["f-pais","pais"],["f-ano","ano"]].forEach(function(p){
+      document.getElementById(p[0]).addEventListener("change",function(e){ state[p[1]]=e.target.value; render(); });
+    });
+    document.querySelectorAll("[data-view]").forEach(function(b){
+      b.addEventListener("click",function(){ document.querySelectorAll("[data-view]").forEach(function(x){x.setAttribute("aria-pressed","false");}); b.setAttribute("aria-pressed","true"); state.view=b.getAttribute("data-view"); render(); });
+    });
+    document.getElementById("clear").addEventListener("click",function(){
+      state.q=state.area=state.sit=state.sub=state.pais=state.ano="";
+      ["q","f-area","f-sit","f-sub","f-pais","f-ano"].forEach(function(id){document.getElementById(id).value="";});
+      render();
+    });
+    document.getElementById("csv").addEventListener("click",csv);
+  }
+
+  function start(data){
+    DATA=data; EVENTS=(data.eventos||[]).map(enrich);
+    var up=d(data.atualizado_em);
+    document.getElementById("stamp").textContent = "Base atualizada em "+(up?fmt(up):"—")+" · situação calculada automaticamente para hoje, "+fmt(TODAY);
+    fillSelect("f-area",uniq(function(e){return e.area;}),"Todas");
+    fillSelect("f-pais",uniq(function(e){return e.pais;}),"Todos");
+    fillSelect("f-ano",uniq(function(e){return e.ano;}),"Todos");
+    document.getElementById("note").innerHTML =
+      '<p><strong>Como ler o painel.</strong> '+esc(data.criterio_ambito||"")+'</p>'+
+      '<p>Para cada evento aparece a edição mais recente com local e datas divulgados. Quando a próxima edição ainda não foi anunciada, isso é indicado nas observações. Eventos marcados com <span class="unconf">*</span> têm informações a confirmar no site oficial.</p>'+
+      '<p>A situação (“em andamento”, “submissão aberta”, contagem de dias) é recalculada sempre que a página é aberta. Datas e locais podem mudar: confira sempre o site oficial antes de submeter.</p>';
+    kpis(); bind(); render();
+  }
+
+  function embedded(){ try{ return JSON.parse(document.getElementById("dados-embutidos").textContent); }catch(e){ return {eventos:[]}; } }
+  // Tenta carregar eventos.json (atualizável); se não conseguir, usa os dados embutidos.
+  if(window.fetch && location.protocol.indexOf("http")===0){
+    fetch("eventos.json",{cache:"no-store"}).then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){ if(!j||!j.eventos||!j.eventos.length) throw 0; start(j); })
+      .catch(function(){ start(embedded()); });
+  } else { start(embedded()); }
+})();
+</script>
+</body>
+</html>
